@@ -14,3 +14,7 @@ input{
 
     margin:10px;
 }
+#gif-container{
+
+    display: inline-block;
+}

@@ -20,7 +20,7 @@ var sports = ["Baseball", "Rugby", "Soccer"];
                 // Adding a class
                 a.addClass("sport");
                 // a.addID(sports[i]);
-                //Adding a data attribute with a value of the movie at index i
+                //Adding a data attribute with a value of the sport at index i
                 a.attr("data-name", sports[i]);
                 //Providing the button's text with a value of the sport at index i
                 a.text(sports[i]);
@@ -60,6 +60,7 @@ var sports = ["Baseball", "Rugby", "Soccer"];
             url: queryURL,
             method: "GET"
              }).then(function(response){
+                $("#gif-container").empty();
                  console.log(response);
                  var gifs = response.data; 
 
@@ -82,8 +83,12 @@ var sports = ["Baseball", "Rugby", "Soccer"];
                  $("#gif-container").prepend(newItemdiv);
                  }
  });
-            $("#gif-container").on("click",".gif",function(){
+});
+            $(document.body).on("click",".gif",function(){
+                console.log("click working");
+             
                 var state = $(this).attr("data-state")
+                console.log(state);
                 if (state === "still") {
                     $(this).attr("src", $(this).attr("data-animate"));
                     $(this).attr("data-state", "animate");
@@ -95,34 +100,9 @@ var sports = ["Baseball", "Rugby", "Soccer"];
                 }
             })
                  
-
-
-                //     var sportImage = $("<img>");
-                //     sportImage.attr("src", imageUrl);
-                //     sportImage.attr("data-still","sports");
-                //     sportImage.attr("data-animate","sports");
-                //     sportImage.attr("","sports");
-
-                //      var imageUrl = gifs[i].images.fixed_height_still.url;
-                //      var rating =gifs[i].rating;
-
-                //      $("#gif-container").append(`<img src=${imageUrl}><p>${rating}</p>`);
-
-                //  }
-
-                // var sportDiv = $("<div class='sport'>");
-
-                
-
-                
-
-                
-
-                // $("#images").prepend(sportImage);
-
        
 
-        });
+      
         function appendGifs(gifs) {
             for (var i = 0; i <= 10; i++) {
               console.log(gifs[i])
@@ -144,11 +124,10 @@ var sports = ["Baseball", "Rugby", "Soccer"];
             }
           }
         
-            $(".sport").click(function(){
-                console.log("button clicked")
-                var buttonValue = $(".sport").attr("data-name")
-                console.log(buttonValue);
-                var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + sport + "&api_key=2ivPQQvVkoQeyV3zEwTbc3VcKVEV54TY&limit=10";
+            $(document).on("click", ".sport", function(e){
+                console.log(e.target.innerText)
+                var buttonValue = e.target.innerText;
+                var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + buttonValue + "&api_key=2ivPQQvVkoQeyV3zEwTbc3VcKVEV54TY&limit=10";
 
 
 
@@ -159,7 +138,7 @@ var sports = ["Baseball", "Rugby", "Soccer"];
              }).then(function(response){
                  console.log(response);
                  var gifs = response.data; 
-
+                $("#gif-container").empty();
                  for(var i=0;i<gifs.length;i++){
                      
                  var dataImage = $("<img>");
