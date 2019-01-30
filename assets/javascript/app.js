@@ -51,7 +51,7 @@ var sports = ["Baseball", "Rugby", "Soccer"];
             var sport = $("#gif-input").val().trim();
 
             // var sport = $(this).attr("data-name");
-            var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + sport + "&api_key=2ivPQQvVkoQeyV3zEwTbc3VcKVEV54TY&limit=10";
+            var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + sport + "&api_key=2ivPQQvVkoQeyV3zEwTbc3VcKVEV54TY&limit=10";
 
 
 
@@ -127,7 +127,7 @@ var sports = ["Baseball", "Rugby", "Soccer"];
             $(document).on("click", ".sport", function(e){
                 console.log(e.target.innerText)
                 var buttonValue = e.target.innerText;
-                var queryURL = "http://api.giphy.com/v1/gifs/search?q=" + buttonValue + "&api_key=2ivPQQvVkoQeyV3zEwTbc3VcKVEV54TY&limit=10";
+                var queryURL = "https://api.giphy.com/v1/gifs/search?q=" + buttonValue + "&api_key=2ivPQQvVkoQeyV3zEwTbc3VcKVEV54TY&limit=10";
 
 
 
